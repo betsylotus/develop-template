@@ -12,9 +12,7 @@
 		"preview": "vite preview",
 		"build-only": "vite build",
 		"type-check": "vue-tsc --build --force",
-		"lint": "eslint --fix src/",
-		"format": "prettier --write src/",
-		"lint:lint-staged": "lint-staged",
+		"lint": "lint-staged",
 		"prepare": "husky",
 		"commit": "git add . && git cz"
 	},

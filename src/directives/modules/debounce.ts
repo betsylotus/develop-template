@@ -1,5 +1,5 @@
 // v-debounce
-import { type Directive, type DirectiveBinding } from 'vue';
+import type { Directive, DirectiveBinding } from 'vue';
 
 interface ElType extends HTMLElement {
 	__handleClick__: () => any;

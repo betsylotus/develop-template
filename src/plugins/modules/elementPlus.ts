@@ -1,5 +1,5 @@
 // 按需引入element-plus（该方法稳定且明确。当然也支持：https://element-plus.org/zh-CN/guide/quickstart.html#%E6%8C%89%E9%9C%80%E5%AF%BC%E5%85%A5）
-import { type App, type Component } from 'vue';
+import type { App, Component } from 'vue';
 import {
 	/**
 	 * 导出来源：https://github.com/element-plus/element-plus/blob/dev/packages/element-plus/component.ts#L111-L211

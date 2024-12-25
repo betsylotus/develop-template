@@ -1,4 +1,4 @@
-import { type App, type Component } from 'vue';
+import type { App, Component } from 'vue';
 
 import * as globComponents from './modules';
 

@@ -6,7 +6,7 @@ import { setupRouter, router } from '@/router';
 import { setupDirectives } from '@/directives';
 import { setupGlobComponents } from '@/components';
 
-// import 'normalize.css';
+// 引入样式
 import '@/styles/index.less';
 
 const bootstrap = async () => {

@@ -4,7 +4,7 @@ import {
 	createWebHistory,
 	createWebHashHistory
 } from 'vue-router';
-import { type App } from 'vue';
+import type { App } from 'vue';
 import { staticRoutes, errorRoutes } from './modules';
 
 // 白名单应该包含基本静态路由

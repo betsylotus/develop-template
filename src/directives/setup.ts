@@ -1,4 +1,4 @@
-import { type App, type Directive } from 'vue';
+import type { App, Directive } from 'vue';
 
 import * as directivesList from './modules';
 

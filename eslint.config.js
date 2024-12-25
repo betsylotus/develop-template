@@ -20,6 +20,7 @@ export default [
 		rules: {
 			// vue规则
 			'vue/multi-word-component-names': 0,
+			'vue/valid-template-root': 0,
 
 			// typescript规则
 			'@typescript-eslint/no-unused-vars': 0,
