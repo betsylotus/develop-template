@@ -6,6 +6,8 @@ import { setupRouter, router } from '@/router';
 import { setupDirectives } from '@/directives';
 import { setupGlobComponents } from '@/components';
 
+import 'virtual:uno.css';
+
 // 引入样式
 import '@/styles/index.less';
 

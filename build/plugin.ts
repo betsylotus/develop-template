@@ -6,7 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools';
 import viteCompression from 'vite-plugin-compression';
 import { visualizer } from 'rollup-plugin-visualizer';
 import removeConsole from 'vite-plugin-remove-console';
-// import { sentryVitePlugin } from '@sentry/vite-plugin';
+import UnoCSS from 'unocss/vite';
 
 const createVitePlugins = (
 	viteEnv: ViteEnv
@@ -22,28 +22,13 @@ const createVitePlugins = (
 		vue(),
 		// vue 可以使用 jsx/tsx 语法
 		vueJsx(),
+		// 使用 unocss 进行 css 处理
+		UnoCSS(),
 		// devTools
 		VITE_DEVTOOLS &&
 			vueDevTools({
 				launchEditor: 'code'
 			}),
-		/* sentryVitePlugin({
-			// 组织名称
-			org: '4508282715439104',
-			// 要接入监控系统的项目
-			project: '4508282723631104',
-			// sentry管理后台平台地址，与dsn相呼应
-			url: 'https://e58addca6004335b4bdda79026cb806b@o4508278619176960.ingest.us.sentry.io/4508282723631104',
-			// 上传SourceMap的路径代码，一般我们只会分析js文件代码
-			include: './dist/js',
-			ignore: ['node_modules', 'vite.config.ts'],
-			// 尤一定要先清洗再上传，否则资源越积越多
-			cleanArtifacts: true, // 先清理再上传
-			// 线上对应的url资源的相对路径
-			urlPrefix: '~/js',
-			authToken: VITE_SENTRY_AUTH_TOKEN,
-			release: VITE_SOURCEMAP_RELEASE
-		}), */
 		// 打包压缩配置
 		createCompression(viteEnv),
 		// 是否生成包预览，分析依赖包大小做优化处理

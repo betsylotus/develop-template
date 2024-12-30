@@ -1,8 +1,10 @@
 import pluginVue from 'eslint-plugin-vue';
 import vueTsEslintConfig from '@vue/eslint-config-typescript';
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting';
+import unocss from '@unocss/eslint-config/flat';
 
 export default [
+	unocss,
 	{
 		name: 'app/files-to-lint',
 		files: ['**/*.{ts,mts,tsx,vue}']
