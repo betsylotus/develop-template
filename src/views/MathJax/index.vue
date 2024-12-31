@@ -7,23 +7,22 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 
-import { mathJaxManager } from '@/utils';
-
-import axios from 'axios';
+import { getQuestionList } from '@/api';
 
 const questionList = ref<any[]>([]);
 
 const fetchData = async () => {
 	try {
-		const res = await axios.post('/api/question/list');
-		questionList.value = res.data.data.list;
+		const { code, data } = await getQuestionList();
+		if (code == 0) {
+			questionList.value = data;
+		}
 	} catch (error) {
 		console.error('Error fetching data:', error);
 	}
 };
 
 onMounted(async () => {
-	await mathJaxManager.init();
 	await fetchData();
 });
 </script>
