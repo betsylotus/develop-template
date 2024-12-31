@@ -4,6 +4,14 @@ import type { RouteRecordRaw } from 'vue-router';
 export const staticRoutes: RouteRecordRaw[] = [
 	{
 		path: '/',
-		component: () => import('@/App.vue')
+		redirect: '/mathjax'
+	},
+	{
+		path: '/home',
+		component: () => import('@/views/HomeView/index.vue')
+	},
+	{
+		path: '/mathjax',
+		component: () => import('@/views/MathJax/index.vue')
 	}
 ];

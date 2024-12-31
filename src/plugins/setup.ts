@@ -1,7 +1,9 @@
 import type { App } from 'vue';
 
-import { setupElementPlus } from './modules';
+import { setupElementPlus, setupMathJax } from './modules';
 
-export const setupPlugins = (app: App) => {
+const setupPlugins = (app: App) => {
 	setupElementPlus(app);
 };
+
+export { setupPlugins, setupMathJax };

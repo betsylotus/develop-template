@@ -2,7 +2,7 @@
 	<div class="math-content">
 		<div
 			v-for="(item, index) in items"
-			:key="index"
+			:key="item.id"
 			class="math-item"
 			v-html="renderMathContent(item.title, index)"
 			ref="mathElements"
@@ -11,11 +11,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick } from 'vue';
-import type { MathContentProps } from './types';
+import { ref, onMounted, nextTick, toRefs } from 'vue';
 import { mathJaxManager } from '@/utils';
 
+interface MathContentProps {
+	items: any[];
+}
+
 const props = defineProps<MathContentProps>();
+const { items } = toRefs(props);
+
 const mathElements = ref<HTMLElement[]>([]);
 
 const renderMathJax = async (element: HTMLElement) => {
@@ -38,6 +43,7 @@ const renderMathContent = (content: string, index: number) => {
 
 onMounted(async () => {
 	await nextTick();
+
 	for (const element of mathElements.value) {
 		await renderMathJax(element);
 	}

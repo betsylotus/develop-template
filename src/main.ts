@@ -6,7 +6,7 @@ import { setupRouter, router } from '@/router';
 import { setupDirectives } from '@/directives';
 import { setupGlobComponents } from '@/components';
 
-import { mathJaxManager } from '@/utils/modules/mathjax';
+import { setupMathJax } from '@/plugins';
 
 import 'virtual:uno.css';
 
@@ -15,7 +15,7 @@ import '@/styles/index.less';
 
 const bootstrap = async () => {
 	// 确保 MathJax 在应用启动前加载
-	await mathJaxManager.init();
+	await setupMathJax();
 
 	const app = createApp(App);
 
