@@ -4,11 +4,10 @@ import Axios, {
 	type AxiosError,
 	type AxiosResponse
 } from 'axios';
-import type { RequestMethods } from './types.d';
 
 const defaultConfig: AxiosRequestConfig = {
 	// 默认地址请求地址，可在 .env.** 文件中修改
-	baseURL: import.meta.env.VITE_API_URL as string,
+	// baseURL: import.meta.env.VITE_API_URL as string,
 	// 跨域时候允许携带凭证
 	withCredentials: true,
 	// 请求超时时间
@@ -19,18 +18,15 @@ const defaultConfig: AxiosRequestConfig = {
 };
 
 class RequestHttp {
+	/** 保存当前`Axios`实例对象 */
+	private static axiosInstance: AxiosInstance = Axios.create(defaultConfig);
+
 	constructor() {
 		// 初始化请求拦截
 		this.httpInterceptorsRequest();
 		// 初始化响应拦截
 		this.httpInterceptorsResponse();
 	}
-
-	/** 初始化配置对象 */
-	private static initConfig: AxiosRequestConfig = {};
-
-	/** 保存当前`Axios`实例对象 */
-	private static axiosInstance: AxiosInstance = Axios.create(defaultConfig);
 
 	/** 请求拦截 */
 	private httpInterceptorsRequest(): void {
@@ -61,49 +57,18 @@ class RequestHttp {
 		);
 	}
 
-	/** 通用请求工具函数 */
-	public request<T>(
-		method: RequestMethods,
-		url: string,
-		param?: AxiosRequestConfig,
-		axiosConfig?: AxiosRequestConfig
-	): Promise<T> {
-		const config = {
-			method,
-			url,
-			...param,
-			...axiosConfig
-		} as AxiosRequestConfig;
-
-		// 单独处理自定义请求/响应回调
-		return new Promise((resolve, reject) => {
-			RequestHttp.axiosInstance
-				.request(config)
-				.then((response: any) => {
-					resolve(response);
-				})
-				.catch((error) => {
-					reject(error);
-				});
-		});
+	/** 常用请求方法封装 */
+	get<T>(url: string, params?: object, _object = {}): Promise<T> {
+		return RequestHttp.axiosInstance.get(url, { params, ..._object });
 	}
-
-	/** 单独抽离的`post`工具函数 */
-	public post<T, P>(
-		url: string,
-		params?: AxiosRequestConfig<P>,
-		config?: AxiosRequestConfig
-	): Promise<T> {
-		return this.request<T>('post', url, params, config);
+	post<T>(url: string, params?: object | string, _object = {}): Promise<T> {
+		return RequestHttp.axiosInstance.post(url, params, _object);
 	}
-
-	/** 单独抽离的`get`工具函数 */
-	public get<T, P>(
-		url: string,
-		params?: AxiosRequestConfig<P>,
-		config?: AxiosRequestConfig
-	): Promise<T> {
-		return this.request<T>('get', url, params, config);
+	put<T>(url: string, params?: object, _object = {}): Promise<T> {
+		return RequestHttp.axiosInstance.put(url, params, _object);
+	}
+	delete<T>(url: string, params?: any, _object = {}): Promise<T> {
+		return RequestHttp.axiosInstance.delete(url, { params, ..._object });
 	}
 }
 

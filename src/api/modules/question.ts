@@ -7,5 +7,5 @@ interface QuestionResponse {
 }
 
 export const getQuestionList = (): Promise<QuestionResponse> => {
-	return http.post('/question/list');
+	return http.post('/api/question/list');
 };

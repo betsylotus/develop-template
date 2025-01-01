@@ -13,5 +13,9 @@ export const staticRoutes: RouteRecordRaw[] = [
 	{
 		path: '/mathjax',
 		component: () => import('@/views/MathJax/index.vue')
+	},
+	{
+		path: '/fileUpload',
+		component: () => import('@/views/FileUpload/index.vue')
 	}
 ];
