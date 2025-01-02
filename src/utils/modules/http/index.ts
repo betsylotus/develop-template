@@ -58,16 +58,16 @@ class RequestHttp {
 	}
 
 	/** 常用请求方法封装 */
-	get<T>(url: string, params?: object, _object = {}): Promise<T> {
+	get(url: string, params?: object, _object = {}): Promise<any> {
 		return RequestHttp.axiosInstance.get(url, { params, ..._object });
 	}
-	post<T>(url: string, params?: object | string, _object = {}): Promise<T> {
+	post(url: string, params?: object | string, _object = {}): Promise<any> {
 		return RequestHttp.axiosInstance.post(url, params, _object);
 	}
-	put<T>(url: string, params?: object, _object = {}): Promise<T> {
+	put(url: string, params?: object, _object = {}): Promise<any> {
 		return RequestHttp.axiosInstance.put(url, params, _object);
 	}
-	delete<T>(url: string, params?: any, _object = {}): Promise<T> {
+	delete(url: string, params?: any, _object = {}): Promise<any> {
 		return RequestHttp.axiosInstance.delete(url, { params, ..._object });
 	}
 }
