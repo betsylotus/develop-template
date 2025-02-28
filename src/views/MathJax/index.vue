@@ -13,10 +13,8 @@ const questionList = ref<any[]>([]);
 
 const fetchData = async () => {
 	try {
-		const { code, data } = await getQuestionList();
-		if (code == 0) {
-			questionList.value = data;
-		}
+		const request = getQuestionList();
+		console.log('request', request);
 	} catch (error) {
 		console.error('Error fetching data:', error);
 	}

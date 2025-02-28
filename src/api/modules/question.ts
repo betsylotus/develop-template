@@ -1,11 +1,16 @@
-import { http } from '@/utils';
+import { httpRequest } from '@/utils/modules/http';
 
-interface QuestionResponse {
-	code: number;
-	data: any[];
-	message?: string;
-}
+/* export const getQuestionList = (params: any) => {
+	return httpRequest.post('/api/question/list', params);
+}; */
 
-export const getQuestionList = (): Promise<QuestionResponse> => {
-	return http.post('/api/question/list');
+export const getQuestionList = (params?: any) => {
+	return httpRequest.post(
+		{
+			url: '/api/question/list',
+			withBaseURL: false,
+			withCancel: true
+		},
+		params
+	);
 };
