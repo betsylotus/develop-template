@@ -4,9 +4,9 @@ import type { RouteRecordRaw } from 'vue-router';
 export const staticRoutes: RouteRecordRaw[] = [
 	{
 		path: '/',
-		redirect: '/mathjax'
+		redirect: '/fabric'
 	},
-	{
+	/* {
 		path: '/home',
 		name: 'Home',
 		component: () => import('@/views/HomeView/index.vue')
@@ -20,5 +20,10 @@ export const staticRoutes: RouteRecordRaw[] = [
 		path: '/fileUpload',
 		name: 'FileUpload',
 		component: () => import('@/views/FileUpload/index.vue')
+	}, */
+	{
+		path: '/fabric',
+		name: 'Fabric',
+		component: () => import('@/views/Fabric/index.vue')
 	}
 ];

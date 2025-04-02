@@ -1,6 +1,6 @@
 import OSS from 'ali-oss';
 import { ref } from 'vue';
-import { getOssToken } from '@/api';
+// import { getOssToken } from '@/api';
 
 export function useOss() {
 	const client = ref<any>(null);
@@ -10,7 +10,7 @@ export function useOss() {
 	const initOSS = async () => {
 		try {
 			loading.value = true;
-			const { code, data } = await getOssToken({
+			/* const { code, data } = await getOssToken({
 				header: {
 					schoolId: '275'
 				},
@@ -36,7 +36,7 @@ export function useOss() {
 					// 设置更长的超时时间
 					timeout: 120000
 				});
-			}
+			} */
 		} catch (e: any) {
 			error.value = '初始化OSS失败: ' + e.message;
 			console.error(e);
