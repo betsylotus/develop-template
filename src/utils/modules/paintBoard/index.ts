@@ -1,12 +1,11 @@
-import { Canvas, FabricObject, Line, PencilBrush } from 'fabric';
+import { Canvas, FabricObject, Line } from 'fabric';
 import type { FabricObjectProps } from 'fabric';
 
 import { CanvasEvent } from './event';
+import { renderPencil, renderEraser } from './brush';
 
 import { useBoardStore } from '@/stores';
 import { ActionMode } from '@/constants';
-
-// import 'fabric/src/mixins/eraser_brush.mixin.js';
 
 class PaintBoard {
 	canvas: Canvas | null = null;
@@ -96,10 +95,7 @@ class PaintBoard {
 			case ActionMode.FREE_DRAW:
 				isDrawingMode = true;
 
-				const pencilBrush = new PencilBrush(this.canvas);
-				this.canvas.freeDrawingBrush = pencilBrush;
-				this.canvas.freeDrawingBrush.width = 10;
-				this.canvas.freeDrawingBrush.color = '#FF6A00';
+				renderPencil();
 
 				this.canvas.discardActiveObject();
 
@@ -108,6 +104,15 @@ class PaintBoard {
 			case ActionMode.SHAPE_DRAW:
 				isDrawingMode = false;
 				selection = true;
+
+				break;
+
+			case ActionMode.ERASE:
+				isDrawingMode = true;
+
+				renderEraser();
+
+				this.canvas.discardActiveObject();
 
 				break;
 

@@ -4,5 +4,7 @@ export const ActionMode = {
 	// 形状绘制
 	SHAPE_DRAW: 'shapeDraw',
 	// 选择
-	SELECT: 'select'
+	SELECT: 'select',
+	// 橡皮擦
+	ERASE: 'erase'
 };
